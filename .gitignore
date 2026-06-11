@@ -1,0 +1,8 @@
+# Build artifacts + large data live on a data volume, never in git.
+build/
+prefix/
+src/
+*.o
+zimrecreate_libzim
+*.zim
+/tmp/
