@@ -1,0 +1,22 @@
+FILE                                          SIZE   MODE      ZIMRU   UPSTREAM  SPEEDUP    ZIMRU-OUT       UP-OUT    CHECK     SEARCH      IDX-ZR/UP
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+wikipedia_zh_chemistry_mini_2026-06           14MB  index      4.17s      7.52s    1.80x         14MB         14MB     =src         OK    7.3MB/7.6MB
+wikipedia_zh_chemistry_mini_2026-06           14MB noindex      3.08s      3.83s    1.24x        6.4MB        8.6MB     =src        n/a            n/a
+wikipedia_zh_chemistry_maxi_2026-06          128MB  index     21.87s     29.78s    1.36x        128MB        128MB     =src         OK      20MB/20MB
+wikipedia_zh_chemistry_maxi_2026-06          128MB noindex     15.13s     18.32s    1.21x        109MB        111MB     =src        n/a            n/a
+wikipedia_ta_top_mini_2026-06                134MB  index     94.20s    114.20s    1.21x        134MB        137MB     =src         OK      53MB/56MB
+wikipedia_ta_top_mini_2026-06                134MB noindex     74.86s     89.84s    1.20x         82MB        103MB     =src        n/a            n/a
+wikipedia_ko_top_mini_2026-07                154MB  index     72.78s    113.72s    1.56x        154MB        160MB     =src         OK      87MB/93MB
+wikipedia_ko_top_mini_2026-07                154MB noindex     43.57s     77.08s    1.77x         68MB        118MB     =src        n/a            n/a
+wikipedia_ja_top_mini_2026-07                179MB  index     97.27s    139.40s    1.43x        179MB        185MB     =src         OK     99MB/106MB
+wikipedia_ja_top_mini_2026-07                179MB noindex     57.99s     91.78s    1.58x         80MB        128MB     =src        n/a            n/a
+wikipedia_en_100_2026-08                     318MB  index      9.81s     11.98s    1.22x        319MB        318MB     =src         OK    3.2MB/3.2MB
+wikipedia_en_100_2026-08                     318MB noindex      8.64s      9.82s    1.14x        315MB        316MB     =src        n/a            n/a
+wikipedia_hi_all_mini_2026-07                378MB  index    340.14s    405.84s    1.19x        377MB        380MB     =src         OK    133MB/135MB
+wikipedia_hi_all_mini_2026-07                378MB noindex    289.14s    339.93s    1.18x        245MB        306MB     =src        n/a            n/a
+wikipedia_yue_all_nopic_2026-06              546MB  index    330.95s    439.75s    1.33x        546MB        550MB     =src         OK    228MB/234MB
+wikipedia_yue_all_nopic_2026-06              546MB noindex    227.93s    282.02s    1.24x        318MB        360MB     =src        n/a            n/a
+wikipedia_he_all_mini_2026-07                634MB  index    440.45s    634.46s    1.44x        634MB        642MB     =src    NOQUERY    263MB/271MB
+wikipedia_he_all_mini_2026-07                634MB noindex    370.42s    505.17s    1.36x        372MB        492MB     =src        n/a            n/a
+wikipedia_ba_all_maxi_2026-07                1.1GB  index    246.28s    288.01s    1.17x        1.1GB        1.1GB     =src         OK    102MB/104MB
+wikipedia_ba_all_maxi_2026-07                1.1GB noindex    192.82s    222.18s    1.15x       1014MB        1.1GB     =src        n/a            n/a
