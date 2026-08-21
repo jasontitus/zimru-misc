@@ -6,3 +6,4 @@ src/
 zimrecreate_libzim
 *.zim
 /tmp/
+bench/zim-manifest
