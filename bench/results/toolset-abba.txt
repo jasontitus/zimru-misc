@@ -1,0 +1,27 @@
+ARCHIVE                            CASE                        ZIMRU   UPSTREAM   SPEEDUP EXIT zr/up
+--------------------------------------------------------------------------------------------------------
+wikipedia_ba_all_maxi_2026-07      zimcheck -C                2.011s     2.367s     1.18x       0/0
+wikipedia_ba_all_maxi_2026-07      zimcheck -I                3.831s     2.842s     0.74x       0/0
+wikipedia_ba_all_maxi_2026-07      zimcheck -R                2.199s    18.494s     8.41x       0/0
+wikipedia_ba_all_maxi_2026-07      zimcheck -A                9.882s    59.097s     5.98x       1/1
+wikipedia_ba_all_maxi_2026-07      zimdump info               0.005s     0.017s     3.40x       0/0
+wikipedia_ba_all_maxi_2026-07      zimdump list               0.081s     0.149s     1.84x       0/0
+wikipedia_ba_all_maxi_2026-07      zimdump dump               6.469s    25.767s     3.98x       0/0
+wikipedia_ba_all_maxi_2026-07      zimbench -n 1000           3.600s     0.019s     0.01x       0/0
+wikipedia_ko_top_mini_2026-07      zimcheck -C                0.274s     0.345s     1.26x       0/0
+wikipedia_ko_top_mini_2026-07      zimcheck -I                0.738s     0.883s     1.20x       0/0
+wikipedia_ko_top_mini_2026-07      zimcheck -R                0.501s     4.912s     9.80x       0/0
+wikipedia_ko_top_mini_2026-07      zimcheck -A                2.596s    14.231s     5.48x       1/1
+wikipedia_ko_top_mini_2026-07      zimdump info               0.005s     0.017s     3.40x       0/0
+wikipedia_ko_top_mini_2026-07      zimdump list               0.098s     0.189s     1.93x       0/0
+wikipedia_ko_top_mini_2026-07      zimdump dump              29.160s     0.098s     0.00x     0/255
+wikipedia_ko_top_mini_2026-07      zimbench -n 1000           2.065s     0.018s     0.01x       0/0
+wikipedia_zh_chemistry_maxi_2026-06 zimcheck -C                0.234s     0.277s     1.18x       0/0
+wikipedia_zh_chemistry_maxi_2026-06 zimcheck -I                0.422s     0.345s     0.82x       0/0
+wikipedia_zh_chemistry_maxi_2026-06 zimcheck -R                0.207s     1.850s     8.94x       0/0
+wikipedia_zh_chemistry_maxi_2026-06 zimcheck -A                0.806s     3.246s     4.03x       1/1
+wikipedia_zh_chemistry_maxi_2026-06 zimdump info               0.005s     0.018s     3.60x       0/0
+wikipedia_zh_chemistry_maxi_2026-06 zimdump list               0.014s     0.037s     2.64x       0/0
+wikipedia_zh_chemistry_maxi_2026-06 zimdump dump               4.134s     4.600s     1.11x       0/0
+wikipedia_zh_chemistry_maxi_2026-06 zimbench -n 1000           0.801s     0.019s     0.02x       0/0
+TOOLSET_DONE

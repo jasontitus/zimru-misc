@@ -104,6 +104,26 @@ named `%` and `$`, and upstream zimdump aborts on them after 24 of
 | `creation-abba-phase1-runtimes.log` | every individual run time behind those rows |
 | `creation-a-first-superseded.txt` | the biased A-first run, kept for comparison |
 | `parity-*.log` | `zimru/bench/parity.sh` output, one per archive |
+| `toolset-abba.txt` | ABBA read-side comparison, tool by tool, 3 archives |
+| `toolset-abba-runtimes.log` | every individual run time behind those rows |
+
+## Read side, tool by tool
+
+`zimru/bench/toolset-bench.sh`, same ABBA scheme. On the 1.1 GB Bashkir
+archive: `zimcheck -R` 8.41×, `zimcheck -A` 5.98×, `zimdump dump` 3.98×,
+`zimdump info` 3.40×, `zimdump list` 1.84×, `zimcheck -C` 1.18×.
+
+Three results are not simple speedups:
+
+- **`zimcheck -I` — upstream is faster** (0.74×). Both detect real cluster
+  corruption; zimru emits a full report where upstream aborts before
+  printing one. Open work.
+- **`zimbench` — not comparable.** Upstream exits 0 after collecting URL
+  lists without running either read phase. Scoring it would credit
+  upstream with ~190× for doing none of the work, and the exit status does
+  not give it away.
+- **`zimdump dump` on Korean — upstream fails** (exit 255, `Error creating
+  symlink from …/%/%`) where zimru completes the export.
 
 ## Parity
 
