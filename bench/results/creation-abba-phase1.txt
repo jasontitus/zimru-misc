@@ -1,0 +1,16 @@
+FILE                                          SIZE   MODE      ZIMRU   UPSTREAM  SPEEDUP     ZR-OUT     UP-OUT   SIZE-D   CHECK    SEARCH     IDX-ZR/UP
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+wikipedia_ar_chemistry_mini_2026-07           13MB  index      3.82s      5.14s    1.35x       13MB       13MB    -3.7%    =src        OK   4.0MB/4.5MB
+wikipedia_ar_chemistry_mini_2026-07           13MB   noft      3.13s      3.74s    1.19x       11MB       11MB    +0.2%    =src       n/a           n/a
+wikipedia_zh_chemistry_mini_2026-06           14MB  index      3.82s      7.04s    1.84x       14MB       14MB    -1.9%    =src        OK   7.3MB/7.6MB
+wikipedia_zh_chemistry_mini_2026-06           14MB   noft      2.93s      3.74s    1.28x      8.3MB      8.6MB    -3.8%    =src       n/a           n/a
+wikipedia_zh_chemistry_maxi_2026-06          128MB  index     20.47s     28.52s    1.39x      128MB      128MB    -0.0%    =src        OK     20MB/20MB
+wikipedia_zh_chemistry_maxi_2026-06          128MB   noft     14.55s     16.92s    1.16x      111MB      111MB    -0.2%    =src       n/a           n/a
+wikipedia_ta_top_mini_2026-06                134MB  index     90.89s    108.17s    1.19x      134MB      137MB    -2.1%    =src        OK     53MB/56MB
+wikipedia_ta_top_mini_2026-06                134MB   noft     78.87s     96.95s    1.23x      103MB      103MB    +0.1%    =src       n/a           n/a
+wikipedia_ko_top_mini_2026-07                154MB  index     76.53s    112.10s    1.46x      154MB      160MB    -3.4%    =src        OK     87MB/93MB
+wikipedia_ko_top_mini_2026-07                154MB   noft     50.31s     79.16s    1.57x      112MB      118MB    -4.7%    =src       n/a           n/a
+wikipedia_ja_top_mini_2026-07                179MB  index     90.11s    132.54s    1.47x      179MB      185MB    -3.3%    =src        OK    99MB/106MB
+wikipedia_ja_top_mini_2026-07                179MB   noft     61.37s     89.23s    1.45x      121MB      128MB    -4.9%    =src       n/a           n/a
+wikipedia_en_100_2026-08                     318MB  index      9.13s     10.91s    1.19x      319MB      318MB    +0.0%    =src        OK   3.2MB/3.2MB
+wikipedia_en_100_2026-08                     318MB   noft      8.03s      9.23s    1.15x      316MB      316MB    +0.0%    =src       n/a           n/a

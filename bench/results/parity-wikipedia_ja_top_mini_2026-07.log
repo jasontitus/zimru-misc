@@ -1,0 +1,17 @@
+TEST                           STATUS       DETAIL
+------------------------------ ------------ ------------------------------
+zimdump-info                   [32mPASS        [0m exact match
+zimdump-list                   [32mPASS        [0m exact match
+zimdump-list-details           [32mPASS        [0m exact match
+zimdump-show-redirect          [32mPASS        [0m exact match
+zimcheck-checksum              [32mPASS        [0m exact match
+zimcheck-integrity             [32mPASS        [0m exact match
+zimcheck-metadata              [32mPASS        [0m exact match
+zimcheck-favicon               [32mPASS        [0m exact match
+zimcheck-mainpage              [32mPASS        [0m exact match
+zimcheck-redirect              [32mPASS        [0m exact match
+zimcheck-all                   [32mPASS        [0m structural match — dangling=72/66 redundant=0/0 external=0/0
+zimcheck-all-json              [32mPASS        [0m structural match — dangling=0/0 redundant=0/0 external=0/0
+
+Summary: 12/12 cases pass.
+Detailed outputs under bench/parity-out/{upstream,zimru}/.
