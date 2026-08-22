@@ -109,21 +109,35 @@ named `%` and `$`, and upstream zimdump aborts on them after 24 of
 
 ## Read side, tool by tool
 
-`zimru/bench/toolset-bench.sh`, same ABBA scheme. On the 1.1 GB Bashkir
-archive: `zimcheck -R` 8.41×, `zimcheck -A` 5.98×, `zimdump dump` 3.98×,
-`zimdump info` 3.40×, `zimdump list` 1.84×, `zimcheck -C` 1.18×.
+`zimru/bench/toolset-bench.sh`, same ABBA scheme. Two runs are recorded
+here: `toolset-abba.txt` before the `zimcheck -I` parallelization, and
+`toolset-abba-post-I-fix.txt` after it.
 
-Three results are not simple speedups:
+On the 1.1 GB Bashkir archive, post-fix: `zimcheck -R` 8.66×,
+`zimcheck -A` 6.97×, `zimdump info` 3.60×, `zimdump list` 1.99×,
+`zimcheck -C` 1.18×, `zimcheck -I` 1.16×.
 
-- **`zimcheck -I` — upstream is faster** (0.74×). Both detect real cluster
-  corruption; zimru emits a full report where upstream aborts before
-  printing one. Open work.
+**`zimcheck -I` was the one workload upstream won** (0.74×), because `-A`'s
+content scan had been rayon-parallel by cluster for some time while `-I`
+still decoded every cluster in a sequential loop — 1.8 s of a 3.8 s run.
+Parallelizing it took `-I` to 1.16× and carried `-A` from 5.98× to 6.97×,
+since `-A` runs the integrity check too.
+
+Two workloads are excluded from the quoted figures:
+
+- **`zimdump dump` is not reliably measurable here.** Extracting 175 k
+  files is dominated by the container's filesystem, not by either tool:
+  within one ABBA pair, zimru's two runs were 7.698 s and 19.832 s and
+  upstream's 30.022 s and 13.964 s. That 2.58× spread is wider than any
+  difference between the implementations. Everything still quoted holds
+  within 1.15× run-to-run.
 - **`zimbench` — not comparable.** Upstream exits 0 after collecting URL
   lists without running either read phase. Scoring it would credit
   upstream with ~190× for doing none of the work, and the exit status does
   not give it away.
-- **`zimdump dump` on Korean — upstream fails** (exit 255, `Error creating
-  symlink from …/%/%`) where zimru completes the export.
+
+Separately, **`zimdump dump` fails outright on Korean** (upstream exit 255,
+`Error creating symlink from …/%/%`) where zimru completes the export.
 
 ## Parity
 
