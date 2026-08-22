@@ -26,8 +26,25 @@ ZIMTOOLS_V=${2:-3.8.0}
 ARCH=${ARCH:-linux-x86_64}
 mkdir -p "$BUILD"
 
-fetch() { # fetch <url> <dest>
-  [ -f "$2" ] || curl -fL --retry 4 --retry-delay 3 -o "$2" "$1"
+# fetch <url> <dest> — download and verify against the .md5 sidecar openzim
+# publishes next to every release artefact. An unverified download is how a
+# "pinned" baseline still ends up being whatever a proxy felt like serving.
+fetch() {
+  local url="$1" dest="$2" want got
+  [ -f "$dest" ] || curl -fL --silent --show-error --retry 4 --retry-delay 3 -o "$dest" "$url"
+  want=$(curl -fsSL --retry 3 "$url.md5" | awk '{print $1}') || {
+    echo "could not fetch $url.md5 — refusing to use an unverified baseline" >&2
+    exit 1
+  }
+  got=$(md5sum "$dest" | awk '{print $1}')
+  if [ "$want" != "$got" ]; then
+    echo "checksum mismatch for $dest" >&2
+    echo "  expected $want" >&2
+    echo "  got      $got" >&2
+    rm -f "$dest"
+    exit 1
+  fi
+  echo "   verified $(basename "$dest")  md5 $got"
 }
 
 echo "== libzim $LIBZIM_V ($ARCH) =="
