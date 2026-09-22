@@ -1,7 +1,11 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Jason Titus
+//
 // zim-manifest — emit a canonical, reader-independent content manifest for a
 // ZIM archive, using real libzim.
 //
-// GPL-2.0-or-later (links libzim). Lives in zimru-misc for that reason.
+// GPL because it links libzim; lives in zimru-misc for that reason. See
+// NOTICE.md for why the repository is version 3 or later.
 //
 // Why this exists: verifying that zimru's writer preserved an archive's
 // content by reading the result back with zimru's own reader proves only
