@@ -1,5 +1,32 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+//
+// Derived from zim-tools (https://github.com/openzim/zim-tools):
+//   src/zimrecreate.cpp          main(), the recreate loop
+//     Copyright (C) 2019-2020 Matthieu Gautier <mgautier@kymeria.fr>
+//   src/tools.h, src/tools.cpp   CopyItem, ItemProvider, guess_is_front_article
+//     Copyright 2013-2016 Emmanuel Engelhart <kelson@kiwix.org>
+//     Copyright 2016 Matthieu Gautier <mgautier@kymeria.fr>
+// Modifications for this benchmark harness: Copyright (C) 2026 Jason Titus.
+//
+// The upstream notice, which also governs this file:
+//
+//   This program is free software; you can redistribute it and/or modify
+//   it under the terms of the GNU  General Public License as published by
+//   the Free Software Foundation; either version 3 of the License, or
+//   any later version.
+//
+//   This program is distributed in the hope that it will be useful,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//   GNU General Public License for more details.
+//
+//   You should have received a copy of the GNU General Public License
+//   along with this program; if not, write to the Free Software
+//   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+//   MA 02110-1301, USA.
+//
 // Faithful re-implementation of zim-tools `zimrecreate` (new-namespace path)
-// driving libzim 9.7.0's built-in Xapian fulltext+title indexer via
+// driving libzim's built-in Xapian fulltext+title indexer via
 // configIndexing(true,"eng"). This is the "old fashioned libzim way" of
 // ZIM indexing+building, used as the benchmark baseline against zimru+xapianbuilder.
 //

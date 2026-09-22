@@ -3,9 +3,10 @@
 Auxiliary tooling for [zimru](https://github.com/jasontitus/zimru) that
 **cannot live in zimru's clean-room MIT tree** — chiefly a GPL libzim
 benchmark baseline. Kept here so neither `zimru` nor the `streetzim` app repo
-is polluted. See [`NOTICE.md`](NOTICE.md) for the license boundary.
+is polluted. **GPL-3.0-or-later** — see [`LICENSE`](LICENSE), and
+[`NOTICE.md`](NOTICE.md) for the license boundary and why it is version 3.
 
-## `bench/` — zimru + xapianbuilder vs libzim 9.7.0
+## `bench/` — zimru + xapianbuilder vs libzim
 
 Benchmarks a full ZIM **recreate** (read → index → compress → write) two ways:
 
@@ -13,7 +14,7 @@ Benchmarks a full ZIM **recreate** (read → index → compress → write) two w
   GPL `xapianbuilder` helper as a separate process (JSONL in → glass DB out)
   to build the Xapian fulltext/title indexes. The GPL boundary is the
   process boundary.
-- **libzim 9.7.0** — the "old fashioned" path: libzim's `Creator` with its
+- **libzim** — the "old fashioned" path: libzim's `Creator` with its
   in-process Xapian indexer (`configIndexing`), driven by the
   `zimrecreate_libzim` harness (a faithful copy of zim-tools `zimrecreate`).
 
@@ -41,6 +42,11 @@ Benchmarks a full ZIM **recreate** (read → index → compress → write) two w
   differ (expected).
 
 ### Results
+
+These tables were measured against **libzim 9.7.0**. The build script now pins
+9.8.2 by default (`./bench/build-baseline.sh 9.7.0` **in a fresh `BUILD`
+dir** reproduces the older baseline — a reused one is refused, not rebuilt); the newer head-to-head against zim-tools 3.8.0 / libzim 9.8.2 is in
+[`bench/results/`](bench/results/README.md).
 
 Intel Xeon W-2295 (36 threads), 125 GB RAM, source on HDD + output in page
 cache. Matched zstd 19. Real OpenStreetMap street ZIMs (tile-heavy).
@@ -70,8 +76,9 @@ zimru preserves the source's raw media clusters.
 ### Reproduce
 
 ```sh
-# 1. one-time: build the libzim 9.7.0 baseline (needs g++, meson, ninja,
+# 1. one-time: build the pinned libzim baseline (needs g++, meson, ninja,
 #    libxapian-dev, libicu-dev; builds zstd+lzma+libzim from source).
+#    Or ./bench/fetch-baseline.sh to download released binaries instead.
 BUILD=/storage/you/zimru-misc-build ./bench/build-baseline.sh
 
 # 2. run the benchmark (RUNS=1 for very large archives)
@@ -84,4 +91,29 @@ RUNS=2 ./bench/bench.sh source-small.zim source-medium.zim
 
 `zimru` must be built with the writer feature (`cargo build --release
 --features writer`) so the index helper is compiled in, and `xapianbuilder`
-must be on `$PATH` / `$XAPIANBUILDER` or zimru silently skips the indexes.
+must be on `$PATH` / `$XAPIANBUILDER` — zimru silently skips the indexes
+without it, so `bench.sh` refuses to start if it cannot find one.
+
+`bench/zim-manifest.cpp` is the libzim-backed content manifest used by
+zimru's `bench/content-verify.sh`:
+
+```sh
+g++ -O2 -std=c++17 bench/zim-manifest.cpp -o bench/zim-manifest \
+  $(pkg-config --cflags --libs libzim libcrypto)
+```
+
+## Tests
+
+```sh
+./tests/run.sh                      # lint + harness behaviour, no network
+TEST_ZIM=small.zim ./tests/run.sh   # also build both C++ tools against the
+                                    # installed libzim and round-trip that file
+```
+
+The behaviour tests drive the real `bench.sh` with stub tools: a source path
+containing a quote is never executed as Python; a crashed run, a run that
+writes nothing (on any repeat, not just the first), and a "+index" row whose
+output has no index are each a FAILED row and a nonzero exit; and
+`build-baseline.sh` refuses a reused checkout that is not the pinned tag and
+commit. CI runs the first form only — the C++ round-trip needs a ZIM, and none
+is committed here.
